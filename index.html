@@ -1,52 +1,43 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <title>Dose Delivery</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 20px;
-        background-color: #f9f9f9;
-        color: #333;
-      }
-      h1 {
-        color: #ff5722;
-      }
-      h2 {
-        color: #333;
-      }
-      ul {
-        list-style: disc;
-        margin-left: 20px;
-      }
-      p {
-        margin-bottom: 15px;
-      }
-      .highlight {
-        font-weight: bold;
-        color: #ff5722;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Pedidos 🚀</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dose Delivery</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #2c3e50; }
+    .produto { margin-bottom: 15px; }
+    label { margin-right: 10px; }
+    button { padding: 10px 20px; background-color: #27ae60; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #2ecc71; }
+  </style>
+</head>
+<body>
+  <h1>Dose Delivery 🚀</h1>
 
-    <p>Olá, Mundo! Se você está vendo esta página, o GitHub Pages funcionou!</p>
+  <div class="produto">
+    <label>Combo de Sushi Simples (R$25,00)</label>
+    <input type="number" id="combo" value="0" min="0">
+  </div>
 
-    <h2>Apresentação do App Dose</h2>
-    <p>O <span class="highlight">App Dose</span> é a solução perfeita para quem quer gerar uma renda extra automática e contínua.</p>
-    
-    <h2>Como Funciona</h2>
-    <ul>
-      <li>Compartilhe seu QR Code exclusivo.</li>
-      <li>Deixe o BotVendedor trabalhar para você, vendendo produtos de forma automatizada.</li>
-      <li>Sem se preocupar com estoque, atendimento ou vendas — o app faz tudo sozinho.</li>
-      <li>Basta ter um Pix ativo e sua parceria com o Dose para começar a receber sua renda extra mensalmente.</li>
-    </ul>
+  <button onclick="enviarPedido()">Finalizar Pedido</button>
 
-    <h2>Resumo do Objetivo</h2>
-    <p>Transformar seu QR Code em uma <span class="highlight">fonte de renda automática</span>, simples, segura e permanente, permitindo que você ganhe dinheiro enquanto foca no que realmente importa.</p>
-  </body>
+  <script>
+    function enviarPedido() {
+      const quantidade = document.getElementById('combo').value;
+
+      if (quantidade <= 0) {
+        alert("Escolha pelo menos 1 combo!");
+        return;
+      }
+
+      let mensagem = `Olá! Gostaria de pedir ${quantidade}x Combo de Sushi Simples. Total: R$${25 * quantidade}.`;
+      
+      const numero = '5547992063317'; // substitua pelo seu número com DDD
+      const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(link, '_blank'); // abre WhatsApp
+    }
+  </script>
+</body>
 </html>
